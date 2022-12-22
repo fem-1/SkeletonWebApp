@@ -21,6 +21,8 @@ public class QueryProcessor {
             return String.valueOf(add(parseAdd(query)));
         } else if (query.toLowerCase().contains("multiplied")){
             return String.valueOf(multiply(parseAdd(query)));
+        }else if(query.toLowerCase().contains("largest")){
+            return String.valueOf(returnLargest(parseLargest(query)));
         }
         return "";
 
@@ -62,5 +64,10 @@ public class QueryProcessor {
         return firstNum + secondNum;
     }
 
+    public Integer returnLargest(String[] splitQuery){
+        int[] intArray = {Integer.parseInt(splitQuery[8]), Integer.parseInt(splitQuery[9]), Integer.parseInt(splitQuery[10])};
+        int max = Arrays.stream(intArray).max().getAsInt();
+        return max;
+    }
 }
 
