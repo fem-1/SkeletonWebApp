@@ -23,11 +23,26 @@ public class QueryProcessor {
         }else if(query.toLowerCase().contains("largest")){
             return String.valueOf(returnLargest(parseLargest(query)));
         }
-//        else if(query.toLowerCase().contains("cube")){
-//            return String.valueOf(returnLargest());
-//        }
+        else if(query.toLowerCase().contains("cube")){
+            return String.valueOf(cubeAndSquare(query));
+        }
         return "";
 
+    }
+
+    private String cubeAndSquare(String query) {
+        ArrayList<Integer> numbers= getNumbersFromString(query);
+        StringBuilder cubeAndSquare = new StringBuilder();
+        for (int number : numbers){
+            if (isCube(number) && isSquare(number)){
+                cubeAndSquare.append(number).append(",");
+            }
+        }
+        if(cubeAndSquare.toString().endsWith(","))
+        {
+            cubeAndSquare = new StringBuilder(cubeAndSquare.toString().substring(0, cubeAndSquare.toString().length() - 1));
+        }
+        return cubeAndSquare.toString();
     }
 
     public String[] parseMultiply(String query){
@@ -73,19 +88,19 @@ public class QueryProcessor {
     }
 
     public ArrayList<Integer> getNumbersFromString(String query){
-        String result = query.replaceAll("\\?", "");
-        result = query.replaceAll(",", "");
+        if(query.endsWith(","))
+        {
+            query = query.substring(0, query.toString().length() - 1);
+        }
+        String result = query.replaceAll(",", "");
         String[] tidied = result.split("\\s+");
-
         ArrayList<Integer> numbers = new ArrayList<>();
         for (String number : tidied){
-            System.out.println(number);
             if (isNumeric(number)){
                 numbers.add(Integer.parseInt(number));
             }
-
         }
-        System.out.println(numbers);
+
 
         return numbers;
     }
@@ -101,6 +116,17 @@ public class QueryProcessor {
         }
         return true;
     }
+
+    public boolean isCube(int number){
+        int a = (int) Math.round(Math.pow(number, 1.0/3.0));
+        return (number == a * a * a);
+    }
+
+    public boolean isSquare(int number){
+        int a = (int) Math.round(Math.pow(number, 1.0/2.0));
+        return (number == a * a);
+    }
+
 }
 
 
