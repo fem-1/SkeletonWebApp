@@ -54,4 +54,8 @@ public class QueryProcessorTest {
     public void LargestNumber() throws Exception{
         assertThat(queryProcessor.process("Which of the following numbers is the largest: 59, 88, 65?"), containsString("88"));
     }
+    @Test
+    public void squareAndCube() throws Exception{
+        assertThat(queryProcessor.process("Which of the following numbers is both a square and a cube: 816, 64, 729, 740, 3136, 4170, 3564?"), containsString("88"));
+    }
 }

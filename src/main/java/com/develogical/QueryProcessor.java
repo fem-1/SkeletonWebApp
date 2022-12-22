@@ -1,9 +1,8 @@
 package com.develogical;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.function.BinaryOperator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class QueryProcessor {
 
@@ -24,6 +23,9 @@ public class QueryProcessor {
         }else if(query.toLowerCase().contains("largest")){
             return String.valueOf(returnLargest(parseLargest(query)));
         }
+//        else if(query.toLowerCase().contains("cube")){
+//            return String.valueOf(returnLargest());
+//        }
         return "";
 
     }
@@ -69,5 +71,36 @@ public class QueryProcessor {
         int max = Arrays.stream(intArray).max().getAsInt();
         return max;
     }
+
+    public ArrayList<Integer> getNumbersFromString(String query){
+        String result = query.replaceAll("\\?", "");
+        result = query.replaceAll(",", "");
+        String[] tidied = result.split("\\s+");
+
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (String number : tidied){
+            System.out.println(number);
+            if (isNumeric(number)){
+                numbers.add(Integer.parseInt(number));
+            }
+
+        }
+        System.out.println(numbers);
+
+        return numbers;
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 }
+
 
