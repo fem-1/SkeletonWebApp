@@ -42,6 +42,12 @@ public class QueryProcessorTest {
     public void addTwoNumbersTenAndFive() throws Exception {
         assertThat(queryProcessor.process("What is 10 plus 5?"), containsString("15"));
     }
+    @Test
+    public void multiplyTwoNumbers() throws Exception {
+        assertThat(queryProcessor.process("What is 12 multiplied by 33?"), containsString("396"));
+
+
+    }
 
 
     @Test

@@ -19,17 +19,24 @@ public class QueryProcessor {
             return "Femi";
         }else if (query.toLowerCase().contains("plus")){
             return String.valueOf(add(parseAdd(query)));
+        } else if (query.toLowerCase().contains("multiplied")){
+            return String.valueOf(multiply(parseAdd(query)));
         }
         return "";
 
     }
 
-    public String[] parseAdd(String query){
+    public String[] parseMultiply(String query){
         String result = query.replaceAll("\\?", "");
 
         String[] splitStr = result.split("\\s+");
-
         return splitStr;
+    }
+
+    public int multiply(String[] query){
+        int firstNum =Integer.parseInt(query[2]);
+        int secondNum =Integer.parseInt(query[5]);
+        return firstNum*secondNum;
     }
 
     public String[] parseLargest(String query){
@@ -41,25 +48,19 @@ public class QueryProcessor {
         return splitStr;
     }
 
+    public String[] parseAdd(String query){
+        String result = query.replaceAll("\\?", "");
+
+        String[] splitStr = result.split("\\s+");
+
+        return splitStr;
+    }
+
     public int add(String[] splitQuery){
         int firstNum =Integer.parseInt(splitQuery[2]);
         int secondNum =Integer.parseInt(splitQuery[4]);
         return firstNum + secondNum;
     }
 
-    public String returnLargest(String[] splitQuery){
-        int[] intArray = [Integer.parseInt(splitQuery[8]), Integer.parseInt(splitQuery[9]), Integer.parseInt(splitQuery[10])];
-
-    }
 }
 
-public class StrToNumber{
-
-    public String StrToInt(String string) {
-
-        stringOfNumbers = string.replaceAll("[^0-9]", "");
-
-
-
-    }
-}
