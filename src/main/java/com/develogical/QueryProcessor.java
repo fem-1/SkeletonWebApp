@@ -27,7 +27,10 @@ public class QueryProcessor {
     }
 
     public String[] parseAdd(String query){
-        String[] splitStr = query.split("\\s+");
+        String result = query.replaceAll("\\?", "");
+
+        String[] splitStr = result.split("\\s+");
+
         return splitStr;
     }
 

@@ -36,11 +36,11 @@ public class QueryProcessorTest {
     }
 @Test
     public void addTwoNumbers() throws Exception {
-        assertThat(queryProcessor.process("What is 72 plus 54"), containsString("126"));
+        assertThat(queryProcessor.process("What is 72 plus 54?"), containsString("126"));
     }
     @Test
     public void addTwoNumbersTenAndFive() throws Exception {
-        assertThat(queryProcessor.process("What is 10 plus 5"), containsString("15"));
+        assertThat(queryProcessor.process("What is 10 plus 5?"), containsString("15"));
     }
 
 }
