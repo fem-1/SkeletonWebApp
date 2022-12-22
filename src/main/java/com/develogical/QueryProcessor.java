@@ -34,13 +34,16 @@ public class QueryProcessor {
         ArrayList<Integer> numbers= getNumbersFromString(query);
         StringBuilder cubeAndSquare = new StringBuilder();
         for (int number : numbers){
+
             if (isCube(number) && isSquare(number)){
-                cubeAndSquare.append(number).append(",");
+
+                cubeAndSquare.append(number).append(", ");
             }
         }
-        if(cubeAndSquare.toString().endsWith(","))
+
+        if(cubeAndSquare.toString().endsWith(", "))
         {
-            cubeAndSquare = new StringBuilder(cubeAndSquare.toString().substring(0, cubeAndSquare.toString().length() - 1));
+            cubeAndSquare = new StringBuilder(cubeAndSquare.substring(0, cubeAndSquare.toString().length() - 2));
         }
         return cubeAndSquare.toString();
     }
@@ -88,7 +91,7 @@ public class QueryProcessor {
     }
 
     public ArrayList<Integer> getNumbersFromString(String query){
-        if(query.endsWith(","))
+        if(query.endsWith("?"))
         {
             query = query.substring(0, query.toString().length() - 1);
         }
