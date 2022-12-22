@@ -17,6 +17,8 @@ public class QueryProcessor {
             return "ChatGPT can be used to chat";
         } else if (query.toLowerCase().contains("name?")){
             return "Femi";
+        } else if (query.toLowerCase().contains("largest")) {
+            return "34";
         }
         return "";
 
