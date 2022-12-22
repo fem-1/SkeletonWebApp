@@ -17,8 +17,6 @@ public class QueryProcessor {
             return "ChatGPT can be used to chat";
         } else if (query.toLowerCase().contains("name?")){
             return "Femi";
-        } else if (query.toLowerCase().contains("34")) {
-            return "34";
         }else if (query.toLowerCase().contains("plus")){
             return String.valueOf(add(parseAdd(query)));
         }
@@ -34,9 +32,34 @@ public class QueryProcessor {
         return splitStr;
     }
 
+    public String[] parseLargest(String query){
+
+        String result = query.replaceAll("\\?", "");
+        result = result.replaceAll(",", "");
+        String[] splitStr = result.split("\\s+");
+
+        return splitStr;
+    }
+
     public int add(String[] splitQuery){
         int firstNum =Integer.parseInt(splitQuery[2]);
         int secondNum =Integer.parseInt(splitQuery[4]);
         return firstNum + secondNum;
+    }
+
+    public String returnLargest(String[] splitQuery){
+        int[] intArray = [Integer.parseInt(splitQuery[8]), Integer.parseInt(splitQuery[9]), Integer.parseInt(splitQuery[10])];
+
+    }
+}
+
+public class StrToNumber{
+
+    public String StrToInt(String string) {
+
+        stringOfNumbers = string.replaceAll("[^0-9]", "");
+
+
+
     }
 }
