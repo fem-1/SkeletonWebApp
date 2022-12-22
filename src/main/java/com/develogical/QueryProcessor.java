@@ -19,8 +19,21 @@ public class QueryProcessor {
             return "Femi";
         } else if (query.toLowerCase().contains("largest")) {
             return "34";
+        }else if (query.toLowerCase().contains("plus")){
+            return String.valueOf(add(parseAdd(query)));
         }
         return "";
 
+    }
+
+    public String[] parseAdd(String query){
+        String[] splitStr = query.split("\\s+");
+        return splitStr;
+    }
+
+    public int add(String[] splitQuery){
+        int firstNum =Integer.parseInt(splitQuery[2]);
+        int secondNum =Integer.parseInt(splitQuery[4]);
+        return firstNum + secondNum;
     }
 }

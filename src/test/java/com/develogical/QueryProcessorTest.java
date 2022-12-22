@@ -34,4 +34,13 @@ public class QueryProcessorTest {
     public void whichNumberIsLarges() throws Exception {
         assertThat(queryProcessor.process("Which of the following numbers is the largest: 34, 20, 27?"), containsString("34"));
     }
+@Test
+    public void addTwoNumbers() throws Exception {
+        assertThat(queryProcessor.process("What is 72 plus 54"), containsString("126"));
+    }
+    @Test
+    public void addTwoNumbersTenAndFive() throws Exception {
+        assertThat(queryProcessor.process("What is 10 plus 5"), containsString("15"));
+    }
+
 }
