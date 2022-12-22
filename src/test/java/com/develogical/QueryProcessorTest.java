@@ -24,4 +24,9 @@ public class QueryProcessorTest {
     public void knowsAboutChatGPT() throws Exception {
         assertThat(queryProcessor.process("ChatGPT"), containsString("chat"));
     }
+
+    @Test
+    public void whatIsYourName() throws Exception {
+        assertThat(queryProcessor.process("What is your name?"), containsString("Femi"));
+    }
 }
